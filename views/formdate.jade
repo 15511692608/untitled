@@ -1,6 +1,20 @@
-//
-   Created by admin on 2017/5/4.
-
+//   Created by admin on 2017/5/4.
 extends layout
 block content
-  input#tosub(type='button',value="123")
+  input#tosub(type='button',value='123')
+  script(type='text/javascript').
+    $(function(){
+      $('#tosub').click(function(){
+        $.ajax({
+            url:'/formatDate',
+            asyn:false,
+            type:'POST',
+            contentType: 'application/json;charset=utf-8',
+            dataType:'json',
+            data:JSON.stringify({'name':'gaox','age':'13'}),
+            success:function(result){
+                alert(JSON.stringify(result))
+            }
+        })
+      })
+    })
